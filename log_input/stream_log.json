@@ -1,1 +1,9 @@
-{"event_type":"purchase", "timestamp":"2017-06-13 11:33:02", "id": "2", "amount": "1601.83"}
+{"event_type":"purchase", "timestamp":"2017-06-13 11:33:02", "id": "2", "amount": "928.83"}
+{"event_type":"purchase", "timestamp":"2017-06-13 11:33:02", "id": "3", "amount": "928.83"}
+{"event_type":"purchase", "timestamp":"2017-06-13 11:53:02", "id": "5", "amount": "128.83"}
+{"event_type":"purchase", "timestamp":"2017-06-13 11:53:02", "id": "15", "amount": "128.83"}
+{"event_type":"purchase", "timestamp":"2017-06-13 12:53:02", "id": "6", "amount": "1128.83"}
+{"event_type":"befriend", "timestamp":"2017-06-13 11:33:01", "id1": "15", "id2": "6"}
+{"event_type":"befriend", "timestamp":"2017-06-13 11:33:01", "id1": "6", "id2": "9"}
+{"event_type":"purchase", "timestamp":"2017-06-13 12:53:02", "id": "2", "amount": "1600"}
+{"event_type":"purchase", "timestamp":"2017-06-13 12:53:02", "id": "4", "amount": "23600"}
