@@ -1,6 +1,5 @@
 -------------------------------------------------------------------------------------------------
-This readme file describes my code that I am submitting to the insight anomoly_detection challenge
- - Max Yarmolinsky, max.yarmolinsky@gmail.com
+Max Yarmolinsky, max.yarmolinsky@gmail.com
 -------------------------------------------------------------------------------------------------
 
 APPROACH
