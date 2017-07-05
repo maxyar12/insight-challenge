@@ -1,7 +1,5 @@
 # July 2, 2017
-# Defines two functions: 1) build social networks from batch_log data
-#                        2) update existing social networks based on stream events
-#
+# build social networks from batch_log data
 # Uses Breadth first search with fixed stopping depth D (to layer D in the BFS)
 # to create social network of degree D
 
