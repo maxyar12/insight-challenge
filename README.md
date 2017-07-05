@@ -24,14 +24,7 @@ NOTE that in python 2 the queue module is called Queue so if you are running my 
     
      import queue -> import Queue
     
-If the JSON log_input file is corrupted in the following ways my program can still work if
-
-any lines of invalid json is skipped
-alid json without required fields such as 'event_type' is also skipped
-               
-However, my program will break if the json values are incorrect types in the log file. For example, something
-like "amount":"5g0dk" which cannot be converted to a number will break my program. I chose not to implement 
-exception handling due to time constraints, but I could easily handle this issue if needed.
+If the JSON log_input file is corrupted by invalid json the line will be skipped in my program and there is a printout. Walid json without required fields such as 'event_type' is also skipped with error message printed. My program will break if the json values are incorrect types in the log file. For example, something like "amount":"5g0dk" which cannot be converted to a number will break my program. I chose not to implement exception handling due to time constraints, but I could easily handle this issue if needed.
 ---------------------------------------------------------------------------------------------------------------------
 
 RUN INSTRUCTIONS
