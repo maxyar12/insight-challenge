@@ -22,10 +22,12 @@ I use the following common python libraries:
                                                     5. queue 
                                                     6. OrderedDict  from collections                                                   
                                                     
- # (NOTE that in python 2 the queue module is called Queue so if you are running my code with python 2.x you need to
-    change the import statement from import queue -> import Queue)
+NOTE that in python 2 the queue module is called Queue so if you are running my code with python 2.x you need to
+    change the import statement from 
     
- # If the JSON log_input file is corrupted in the following ways my program can still work
+     import queue -> import Queue
+    
+If the JSON log_input file is corrupted in the following ways my program can still work
                - any lines of invalid json is skipped
                - valid json without required fields such as 'event_type' is also skipped
                
