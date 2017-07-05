@@ -27,13 +27,16 @@ NOTE that in python 2 the queue module is called Queue so if you are running my 
 and also change line 12 
 
      q= queue.Queue() -> q = Queue.Queue()
-    
-If the JSON log_input file is corrupted by invalid json the line will be skipped in my program and there is a printout. Valid json without required fields such as 'event_type' is also skipped with error message printed. My program will break if the json values are incorrect types in the log file. For example, something like "amount":"5g0dk" which cannot be converted to a number will break my program. I chose not to implement exception handling of these values due to time constraints, but I could easily handle this issue if needed.
----------------------------------------------------------------------------------------------------------------------
 
 RUN INSTRUCTIONS
 
 just execute run.sh
+
+
+-------------------------------------------------------------------------------------------------------------------------------    
+If the JSON log_input file is corrupted by invalid json the line will be skipped in my program and there is a printout. Valid json without required fields such as 'event_type' is also skipped with error message printed. My program will break if the json values are incorrect types in the log file. For example, something like "amount":"5g0dk" which cannot be converted to a number will break my program. I chose not to implement exception handling of these values due to time constraints, but I could easily handle this issue if needed. (I noticed that I only checked for missing keys when reading the batch_log and not when reading the stream_log, but at this 
+point I don't want to make any further changes because the project is due soon)
+---------------------------------------------------------------------------------------------------------------------
 
 Thank you for your time and consideration!!
 
