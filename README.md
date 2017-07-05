@@ -29,5 +29,6 @@ RUN INSTRUCTIONS
 
 just execute run.sh
 
-I also want to repeat that in python 2 the queue module is called Queue so if you are running my code with python 2 you need to
-    change the import statement from import queue -> import Queue
+Thank you for your time and consideration!!
+
+Max
