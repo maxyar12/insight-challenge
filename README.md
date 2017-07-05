@@ -1,5 +1,34 @@
-# insight_challenge
+-------------------------------------------------------------------------------------------------
+This readme file describes my code that I am submitting to the insight anomoly_detection challenge
+ - Max Yarmolinsky, max.yarmolinsky@gmail.com
+-------------------------------------------------------------------------------------------------
 
-This is the readme file
+APPROACH
 
-Thanks for reading!
+I code with Python. I store the users in a list. I store the social network information and purchase histories 
+as well as most other user data in dictionaries. The friend network is stored as an adjacency list. The social network is 
+constructed by breadth first search with fixed stopping depth D as an input parameter. Purchasing 
+statistics for each users network are calculated in the module snpurchasestats. I have tested the code with well properly formatted
+batch and stream logs and it works correctly.
+--------------------------------------------------------------------------------------------------------------------
+
+DEPENDENCIES
+
+I use the following common python libraries:
+                                                    1. sys  
+                                                    2. json
+                                                    3. datetime               
+                                                    4. math
+                                                    5. queue 
+                                                    6. OrderedDict  from collections                                                   
+                                                    
+ # (NOTE that in python 2 the queue module is called Queue so if you are running my code with python 2.x you need to
+    change the import statement from import queue -> import Queue)
+---------------------------------------------------------------------------------------------------------------------
+
+RUN INSTRUCTIONS
+
+just execute run.sh
+
+I also want to repeat that in python 2 the queue module is called Queue so if you are running my code with python 2 you need to
+    change the import statement from import queue -> import Queue
