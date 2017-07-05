@@ -37,16 +37,31 @@ iterb = iter(batch_file)
 next(iterb)                                        # skip the first line of batch_file
 
 for line in iterb:
-    ev= json.loads(line)                  
-    if ev['event_type'] == 'befriend':               
+    try:
+        ev= json.loads(line) 
+    except ValueError:
+        print('Decoding JSON has failed')    
+    if not all(x in ev.keys() for x in ['timestamp', 'event_type',]):
+        print('missing key')
+        continue   
+    if ev['event_type'] == 'befriend':   
+        if not all(x in ev.keys() for x in ['id1', 'id2',]):
+            print('missing key')
+            continue       
         userinit(ev['id1'])
         userinit(ev['id2'])          
         friends[ev['id1']].append(ev['id2'])         # update adjacency list
-        friends[ev['id2']].append(ev['id1'])         
+        friends[ev['id2']].append(ev['id1'])      
     elif ev['event_type'] == 'unfriend':
+        if not all(x in ev.keys() for x in ['id1', 'id2',]):
+            print('missing key')
+            continue   
         friends[ev['id1']].remove(ev['id2'])         # update adjacency list
         friends[ev['id2']].remove(ev['id1']) 
     elif ev['event_type'] == 'purchase':
+        if not all(x in ev.keys() for x in ['id', 'amount',]):
+            print('missing key')
+            continue   
         userinit(ev['id'])
         purchasehandler.handlepurchase(ev['id'],ev['amount'],ev['timestamp'],purchases,T)    # handle purchase
                 
@@ -60,7 +75,10 @@ out_file = open(out_path, 'w')
 out_file.close()
 
 for line in stream_file:
-     ev = json.loads(line,object_pairs_hook=OrderedDict)
+     try:
+         ev = json.loads(line,object_pairs_hook=OrderedDict)
+     except ValueError:
+         print('Decoding JSON has failed') 
      if ev['event_type'] == 'befriend':               
          userinit(ev['id1'])
          userinit(ev['id2'])          
@@ -75,24 +93,11 @@ for line in stream_file:
          (means_and_sds,snPurchaseHistory) = snpurchasestats.buildstats(SNetwork,purchases,T)
      elif ev['event_type'] == 'purchase':
          userinit(ev['id'])
-         print(ev['id'])
-         print(len(snPurchaseHistory[ev['id']]))
          if len(snPurchaseHistory[ev['id']]) >= 2:                                                   # anomoly detection
              if float(ev['amount']) > means_and_sds[ev['id']][0] + 3.0*means_and_sds[ev['id']][1]:   # anomoly detection
-                 print('anomoly of ' + ev['amount']+' for user '+ev['id'])                           # flag + write to 
                  flagged_event = json.dumps(ev,separators=(', ',':'))[0:-1] + ', "mean":'+ '"'+"%.2f" % means_and_sds[ev['id']][0]+ '", "sd":' +'"'+"%.2f" % means_and_sds[ev['id']][1] +'"}' 
                  with open(out_path, "a") as myfile:
                      myfile.write(flagged_event + '\n') 
          purchasehandler.handlepurchase(ev['id'],ev['amount'],ev['timestamp'],purchases,T)
          (means_and_sds,snPurchaseHistory) = snpurchasestats.buildstats(SNetwork,purchases,T)
-         
-print(SNetwork)
-print(means_and_sds,snPurchaseHistory)
-
-print(friends)
-         
-
-
-
-
     
