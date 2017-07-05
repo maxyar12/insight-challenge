@@ -34,9 +34,12 @@ just execute run.sh
 
 
 -------------------------------------------------------------------------------------------------------------------------------    
-If the JSON log_input file is corrupted by invalid json the line will be skipped in my program and there is a printout. Valid json without required fields such as 'event_type' is also skipped with error message printed. My program will break if the json values are incorrect types in the log file. For example, something like "amount":"5g0dk" which cannot be converted to a number will break my program. I chose not to implement exception handling of these values due to time constraints, but I could easily handle this issue if needed. (I noticed that I only checked for missing keys when reading the batch_log and not when reading the stream_log, but at this 
-point I don't want to make any further changes because the project is due soon)
+If the JSON log_input file is corrupted by invalid json the line will be skipped in my program and there is a printout. Valid json without required fields such as 'event_type' is also skipped with error message printed.
 ---------------------------------------------------------------------------------------------------------------------
+My program updates the social network and the purchase statistics of each social network on each stream event.
+I am finding that this causes the program to run a bit slower than desired, either some trade-offs must be made for
+example only updating every T steps, or I need to see where my code can be optimized 
+
 
 Thank you for your time and consideration!!
 
