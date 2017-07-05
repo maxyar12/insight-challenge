@@ -52,12 +52,17 @@ for line in iterb:
         userinit(ev['id2'])          
         friends[ev['id1']].append(ev['id2'])         # update adjacency list
         friends[ev['id2']].append(ev['id1'])      
-    elif ev['event_type'] == 'unfriend':
+    elif ev['event_type'] == 'unfriend': 
         if not all(x in ev.keys() for x in ['id1', 'id2',]):
             print('missing key')
-            continue   
-        friends[ev['id1']].remove(ev['id2'])         # update adjacency list
-        friends[ev['id2']].remove(ev['id1']) 
+            continue  
+        userinit(ev['id1'])
+        userinit(ev['id2']) 
+        try:        
+            friends[ev['id1']].remove(ev['id2'])         # update adjacency list
+            friends[ev['id2']].remove(ev['id1']) 
+        except ValueError:
+            print('unfriend request failed, users were not previously friends afaik')
     elif ev['event_type'] == 'purchase':
         if not all(x in ev.keys() for x in ['id', 'amount',]):
             print('missing key')
@@ -87,8 +92,13 @@ for line in stream_file:
          SNetwork = snetworking.buildSN(friends,D)                                               # update social network
          (means_and_sds,snPurchaseHistory) = snpurchasestats.buildstats(SNetwork,purchases,T)    # rebuild stats/history     
      elif ev['event_type'] == 'unfriend':
-         friends[ev['id1']].remove(ev['id2'])         # update adjacency list
-         friends[ev['id2']].remove(ev['id1']) 
+         userinit(ev['id1'])
+         userinit(ev['id2']) 
+         try:  
+             friends[ev['id1']].remove(ev['id2'])         # update adjacency list
+             friends[ev['id2']].remove(ev['id1']) 
+         except ValueError:
+             print('unfriend request failed, users were not previously friends afaik')    
          SNetwork = snetworking.buildSN(friends,D)
          (means_and_sds,snPurchaseHistory) = snpurchasestats.buildstats(SNetwork,purchases,T)
      elif ev['event_type'] == 'purchase':
