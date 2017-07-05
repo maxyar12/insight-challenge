@@ -5,10 +5,11 @@ This readme file describes my code that I am submitting to the insight anomoly_d
 
 APPROACH
 
-I code with Python. I store the users in a list. I store the social network information and purchase histories 
-as well as most other user data in dictionaries. The friend network is stored as an adjacency list. The social network is 
-constructed by breadth first search with fixed stopping depth D. Purchasing 
-statistics for each users network are calculated for the T latest purchases in the network in the module snpurchasestats. 
+ I store the social network information and purchase histories as well as most other user data in dictionaries.
+
+The social network is constructed by breadth first search with fixed stopping depth D. 
+
+Purchasing statistics for each users network are calculated for the T latest purchases in a separate module. 
 --------------------------------------------------------------------------------------------------------------------
 
 DEPENDENCIES
@@ -23,6 +24,14 @@ I use the following common python libraries:
                                                     
  # (NOTE that in python 2 the queue module is called Queue so if you are running my code with python 2.x you need to
     change the import statement from import queue -> import Queue)
+    
+ # If the JSON log_input file is corrupted in the following ways my program can still work
+               - any lines of invalid json is skipped
+               - valid json without required fields such as 'event_type' is also skipped
+               
+    However, my program will break if the json values are incorrect types in the log file. For example, something
+    like "amount":"5g0dk" which cannot be converted to a number will break my program. I chose not to implement 
+    exception handling due to time constraints, but I could easily handle this issue if needed.
 ---------------------------------------------------------------------------------------------------------------------
 
 RUN INSTRUCTIONS
