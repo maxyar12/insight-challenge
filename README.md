@@ -7,9 +7,8 @@ APPROACH
 
 I code with Python. I store the users in a list. I store the social network information and purchase histories 
 as well as most other user data in dictionaries. The friend network is stored as an adjacency list. The social network is 
-constructed by breadth first search with fixed stopping depth D as an input parameter. Purchasing 
-statistics for each users network are calculated in the module snpurchasestats. I have tested the code with well properly formatted
-batch and stream logs and it works correctly.
+constructed by breadth first search with fixed stopping depth D. Purchasing 
+statistics for each users network are calculated for the T latest purchases in the network in the module snpurchasestats. 
 --------------------------------------------------------------------------------------------------------------------
 
 DEPENDENCIES
